@@ -25,6 +25,7 @@ And you can use it to pick any weird character someone got into Unicode, too.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
+Requires:       rofi
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
@@ -50,3 +51,7 @@ BuildRequires:  python3-setuptools
 %{python3_sitelib}/picker/
 %{_bindir}/rofimoji
 %{_mandir}/man1/%{name}.1.gz
+
+%changelog
+* Fri May 12 2021 Major Hayden <major@mhtx.net> - 5.1.0-1
+- Initial build.
