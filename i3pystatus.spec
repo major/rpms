@@ -22,6 +22,8 @@ the i3 window manager.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
+Requires:       python3-psutil
+Requires:       python3-pytz
 BuildRequires:  python3-devel
 BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
@@ -50,5 +52,8 @@ BuildRequires:  python3-setuptools
 %{_bindir}/%{srcname}-setting-util
 
 %changelog
+* Fri May 14 2021 Major Hayden <major@mhtx.net> - 3.35-2
+- Add psutil and pytz requirements.
+
 * Fri May 14 2021 Major Hayden <major@mhtx.net> - 3.35-1
 - Initial build.
