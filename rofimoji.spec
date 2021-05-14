@@ -6,7 +6,7 @@ Version:        5.1.0
 %forgemeta
 
 Name:           %{srcname}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -40,9 +40,6 @@ BuildRequires:  python3-setuptools
 %install
 %py3_install
 
-%check
-%{python3} setup.py test
-
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 %license LICENSE
@@ -53,5 +50,8 @@ BuildRequires:  python3-setuptools
 %{_mandir}/man1/%{name}.1.gz
 
 %changelog
-* Fri May 12 2021 Major Hayden <major@mhtx.net> - 5.1.0-1
+* Fri May 14 2021 Major Hayden <major@mhtx.net> - 5.1.0-2
+- Remove check section since upstream has no tests.
+
+* Fri May 14 2021 Major Hayden <major@mhtx.net> - 5.1.0-1
 - Initial build.
