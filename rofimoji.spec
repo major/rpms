@@ -40,7 +40,6 @@ BuildRequires:  python3-setuptools
 %install
 %py3_install
 
-# Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 %license LICENSE
 %doc README.md
