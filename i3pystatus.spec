@@ -25,7 +25,6 @@ Summary:        %{summary}
 Requires:       python3-psutil
 Requires:       python3-pytz
 BuildRequires:  python3-devel
-BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 
