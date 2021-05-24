@@ -1,6 +1,6 @@
 Name:           wtype
 Version:        0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        xdotool type for Wayland
 License:        MIT
 
@@ -9,18 +9,17 @@ License:        MIT
 # to be present. Setting it manually allows both to work.
 %global         forgeurl    https://github.com/atx/%{name}
 %global         tag         v%{version}
-%global         archivename %{name}-%{tag}.tar.gz
+%global         archivename %{name}-%{tag}
 %forgemeta
 
 URL:            %{forgeurl}
 Source0:        %{forgesource}
 
-BuildRequires:  cmake
 BuildRequires:  gcc
-BuildRequires:  git
-BuildRequires:  libxkbcommon-devel
 BuildRequires:  meson
-BuildRequires:  wayland-devel
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 %{summary}
@@ -35,9 +34,6 @@ BuildRequires:  wayland-devel
 %install
 %meson_install
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %files
 %license LICENSE
 %doc README.md
@@ -45,5 +41,10 @@ BuildRequires:  wayland-devel
 %{_mandir}/man1/wtype.1*
 
 %changelog
+* Mon May 24 2021 Major Hayden <major@mhtx.net> - 0.3-2
+- Remove extension from archivename.
+- Use pkgconfig to find build requirements.
+- Remove post/postun scriptlets as they're no longer needed.
+
 * Mon May 24 2021 Major Hayden <major@mhtx.net> - 0.3-1
 - Initial build.
