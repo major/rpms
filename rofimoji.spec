@@ -6,7 +6,7 @@ Version:        5.1.0
 %forgemeta
 
 Name:           %{srcname}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -25,14 +25,25 @@ And you can use it to pick any weird character someone got into Unicode, too.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-Requires:       rofi
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+
+# Requirements for X11
+Requires:       rofi
+Requires:       xsel
+Requires:       xclip
+Requires:       xdotool
+
+# Requirements for Wayland
+Requires:       wofi
+Requires:       wl-clipboard
+Requires:       wtype
 
 %description -n python3-%{srcname} %_description
 
 %prep
 %autosetup -n %{srcname}-%{version}
+sed -i -e '/^#!\//, 1d' picker/rofimoji.py
 
 %build
 %py3_build
@@ -46,9 +57,14 @@ BuildRequires:  python3-setuptools
 %{python3_sitelib}/%{srcname}-*.egg-info/
 %{python3_sitelib}/picker/
 %{_bindir}/rofimoji
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1*
 
 %changelog
+* Mon May 24 2021 Major Hayden <major@mhtx.net> - 5.1.0-3
+- Added extra X11/Wayland requirements.
+- Removed shebangs in rofimoji.py.
+- Added wildcard for future man page compression changes.
+
 * Fri May 14 2021 Major Hayden <major@mhtx.net> - 5.1.0-2
 - Remove check section since upstream has no tests.
 
