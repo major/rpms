@@ -1,0 +1,26 @@
+diff -up tests/test_lastfm.py.orig tests/test_lastfm.py
+--- tests/test_lastfm.py.orig	2021-05-24 15:22:29.941944693 -0500
++++ tests/test_lastfm.py	2021-05-24 15:22:36.971905831 -0500
+@@ -3,8 +3,7 @@ Basic test for the plexstatus module
+ """
+ 
+ import unittest
+-from mock import patch
+-from unittest.mock import MagicMock
++from unittest.mock import MagicMock, patch
+ from urllib.request import urlopen
+ from i3pystatus import lastfm
+ 
+diff -up tests/test_plexstatus.py.orig tests/test_plexstatus.py
+--- tests/test_plexstatus.py.orig	2021-05-24 15:22:19.674001458 -0500
++++ tests/test_plexstatus.py	2021-05-24 15:22:44.731862934 -0500
+@@ -3,8 +3,7 @@ Basic test for the plexstatus module
+ """
+ 
+ import unittest
+-from mock import patch
+-from unittest.mock import MagicMock
++from unittest.mock import MagicMock, patch
+ from urllib.request import urlopen
+ from i3pystatus import plexstatus
+ 

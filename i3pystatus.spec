@@ -12,6 +12,7 @@ Summary:        A complete replacement for i3status
 License:        MIT
 URL:            %{forgeurl}
 Source0:        %{forgesource}
+Patch0:         i3pystatus-mock.patch
 
 BuildArch:      noarch
 
@@ -31,7 +32,7 @@ BuildRequires:  python3-setuptools
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version} -p0
 
 %build
 %py3_build
