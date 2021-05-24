@@ -1,13 +1,17 @@
-%global forgeurl https://github.com/atx/wtype
-Version:        0.3
-%global tag     v%{version}
-%forgemeta
-
 Name:           wtype
+Version:        0.3
 Release:        1%{?dist}
 Summary:        xdotool type for wayland
-
 License:        MIT
+
+# NOTE(mhayden): archivename is required here because Fedora looks for the
+# source tarball without the `v` from the tag. EPEL packaging expects the `v`
+# to be present. Setting it manually allows both to work.
+%global         forgeurl    https://github.com/atx/%{name}
+%global         tag         v%{version}
+%global         archivename %{name}-%{tag}.tar.gz
+%forgemeta
+
 URL:            %{forgeurl}
 Source0:        %{forgesource}
 
@@ -22,7 +26,7 @@ BuildRequires:  wayland-devel
 %{summary}
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup %{name}-%{version}
 
 %build
 %meson
