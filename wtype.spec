@@ -22,10 +22,9 @@ BuildRequires:  wayland-devel
 %{summary}
 
 %prep
-%autosetup
+%autosetup -n %{name}-%{version}
 
 %build
-ls -alR
 %meson
 %meson_build
 
