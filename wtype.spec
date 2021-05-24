@@ -1,7 +1,7 @@
 Name:           wtype
 Version:        0.3
 Release:        1%{?dist}
-Summary:        xdotool type for wayland
+Summary:        xdotool type for Wayland
 License:        MIT
 
 # NOTE(mhayden): archivename is required here because Fedora looks for the
