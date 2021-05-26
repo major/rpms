@@ -42,10 +42,7 @@ Requires:       wtype
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n %{srcname}-%{version}
-find . -name rofimoji.py
-sed -i -e '/^#!\//, 1d' picker/rofimoji.py
-
+%setup -n %{srcname}-%{version}
 
 %build
 %py3_build
