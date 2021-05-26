@@ -17,9 +17,9 @@ BuildArch:      noarch
 
 %global _description %{expand:
 How often did you want to insert one of those Unicode emoji only to learn that
-there is no nice picker for Linux? Fear no more, this script uses the power of 
-rofi (and other dmenu-derivatives like wofi) to present exactly the picker you 
-always wanted. Insert the selected emoji directly, or copy it to the clipboard. 
+there is no nice picker for Linux? Fear no more, this script uses the power of
+rofi (and other dmenu-derivatives like wofi) to present exactly the picker you
+always wanted. Insert the selected emoji directly, or copy it to the clipboard.
 And you can use it to pick any weird character someone got into Unicode, too.}
 %description %_description
 
@@ -43,7 +43,9 @@ Requires:       wtype
 
 %prep
 %autosetup -n %{srcname}-%{version}
+find . -name rofimoji.py
 sed -i -e '/^#!\//, 1d' picker/rofimoji.py
+
 
 %build
 %py3_build
