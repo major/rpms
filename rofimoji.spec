@@ -1,12 +1,11 @@
-%global srcname rofimoji
-
-%global forgeurl https://github.com/fdw/rofimoji
+%global         srcname     rofimoji
+%global         forgeurl    https://github.com/fdw/rofimoji
 Version:        5.1.0
-%global tag     %{version}
+%global         tag         %{version}
 %forgemeta
 
 Name:           %{srcname}
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -25,6 +24,7 @@ And you can use it to pick any weird character someone got into Unicode, too.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
@@ -42,23 +42,25 @@ Requires:       wtype
 %description -n python3-%{srcname} %_description
 
 %prep
-%setup -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%pyproject_save_files 'picker'
 
-%files -n python3-%{srcname}
+%files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
 %doc README.md
-%{python3_sitelib}/%{srcname}-*.egg-info/
-%{python3_sitelib}/picker/
 %{_bindir}/rofimoji
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Thu May 27 2021 Major Hayden <major@mhtx.net> - 5.1.0-4
+- Switched to using pyproject-rpm-macros.
+
 * Mon May 24 2021 Major Hayden <major@mhtx.net> - 5.1.0-3
 - Added extra X11/Wayland requirements.
 - Removed shebangs in rofimoji.py.
