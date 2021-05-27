@@ -46,8 +46,6 @@ Requires:       wtype
 %pyproject_buildrequires -r
 
 %build
-# DEBUG!
-ls -alR
 %pyproject_wheel
 
 %install
