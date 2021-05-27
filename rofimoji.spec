@@ -26,9 +26,6 @@ And you can use it to pick any weird character someone got into Unicode, too.}
 Summary:        %{summary}
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-devel
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
 
 # Requirements for X11
 Requires:       rofi
@@ -45,6 +42,8 @@ Requires:       wtype
 
 %prep
 %autosetup -n %{srcname}-%{version}
+%generate_buildrequires
+%pyproject_buildrequires -r
 
 %build
 %pyproject_wheel
