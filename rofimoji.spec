@@ -38,13 +38,12 @@ And you can use it to pick any weird character someone got into Unicode, too.
 
 %prep
 %autosetup -n %{srcname}-%{version}
+%py3_shebang_fix picker/rofimoji.py
 
 %generate_buildrequires
 %pyproject_buildrequires
 
 %build
-# DEBUG
-find . -name setup.py
 %pyproject_wheel
 
 %install
