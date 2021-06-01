@@ -43,6 +43,8 @@ And you can use it to pick any weird character someone got into Unicode, too.
 %pyproject_buildrequires
 
 %build
+# DEBUG
+find . -name setup.py
 %pyproject_wheel
 
 %install
