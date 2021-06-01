@@ -1,11 +1,11 @@
 %global         srcname     rofimoji
-%global         forgeurl    https://github.com/fdw/rofimoji
 Version:        5.1.0
+%global         forgeurl    https://github.com/fdw/rofimoji
 %global         tag         %{version}
 %forgemeta
 
 Name:           %{srcname}
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A character picker for rofi 😀
 
 License:        MIT
@@ -22,10 +22,11 @@ always wanted. Insert the selected emoji directly, or copy it to the clipboard.
 And you can use it to pick any weird character someone got into Unicode, too.}
 %description %_description
 
-%package -n python3-%{srcname}
 Summary:        %{summary}
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-devel
+
+%py_provides    python3-picker
 
 # Requirements for X11
 Requires:       rofi
@@ -38,10 +39,9 @@ Requires:       wofi
 Requires:       wl-clipboard
 Requires:       wtype
 
-%description -n python3-%{srcname} %_description
-
 %prep
 %autosetup -n %{srcname}-%{version}
+
 %generate_buildrequires
 %pyproject_buildrequires -r
 
@@ -50,15 +50,18 @@ Requires:       wtype
 
 %install
 %pyproject_install
-%pyproject_save_files 'picker'
+%pyproject_save_files picker
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n %{srcname} -f %{pyproject_files}
 %license LICENSE
 %doc README.md
 %{_bindir}/rofimoji
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Tue Jun 01 2021 Major Hayden <major@mhtx.net> - 5.1.0-5
+- Package 'rofimoji' as a package without a python3-rofimoji subpackage.
+
 * Thu May 27 2021 Major Hayden <major@mhtx.net> - 5.1.0-4
 - Switched to using pyproject-rpm-macros.
 
