@@ -13,16 +13,6 @@ URL:            %{forgeurl}
 Source0:        %{forgesource}
 
 BuildArch:      noarch
-
-%global _description %{expand:
-How often did you want to insert one of those Unicode emoji only to learn that
-there is no nice picker for Linux? Fear no more, this script uses the power of
-rofi (and other dmenu-derivatives like wofi) to present exactly the picker you
-always wanted. Insert the selected emoji directly, or copy it to the clipboard.
-And you can use it to pick any weird character someone got into Unicode, too.}
-%description %_description
-
-Summary:        %{summary}
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-devel
 
@@ -39,11 +29,18 @@ Requires:       wofi
 Requires:       wl-clipboard
 Requires:       wtype
 
+%description
+How often did you want to insert one of those Unicode emoji only to learn that
+there is no nice picker for Linux? Fear no more, this script uses the power of
+rofi (and other dmenu-derivatives like wofi) to present exactly the picker you
+always wanted. Insert the selected emoji directly, or copy it to the clipboard.
+And you can use it to pick any weird character someone got into Unicode, too.
+
 %prep
 %autosetup -n %{srcname}-%{version}
 
 %generate_buildrequires
-%pyproject_buildrequires -r
+%pyproject_buildrequires
 
 %build
 %pyproject_wheel
